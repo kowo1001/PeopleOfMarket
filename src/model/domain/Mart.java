@@ -1,10 +1,13 @@
 package model.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +21,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude="orders")
 @Builder
 
 @Entity
@@ -35,4 +38,7 @@ public class Mart {
 	
 	@Column(name="loc", nullable=false, length=40)
 	private String location;
+	
+	@OneToMany(mappedBy="martNumber")
+	private List<Orders> orders;
 }
