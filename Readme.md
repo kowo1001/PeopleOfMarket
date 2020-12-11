@@ -6,7 +6,7 @@
 미리 어플을 통해 장을 보면 마트에서 물건을 미리 포장해주고 고객은 마트에 들려 간단하게 들고가면 된다.
 
 ## STRUCTURE
-
+![img](https://github.com/kowo1001/PeopleOfMarket/blob/master/1.PNG)
 
 
 
