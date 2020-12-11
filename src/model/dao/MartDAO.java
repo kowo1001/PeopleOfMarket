@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,16 +11,18 @@ import javax.persistence.NoResultException;
 import org.junit.jupiter.api.Test;
 
 import model.domain.Mart;
+<<<<<<< HEAD
 import model.util.PublicCommon;
+=======
+import model.domain.Orders;
+>>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
 
 public class MartDAO {
 
 	public static Mart addMart(String martName, String location, EntityManager em) throws SQLException {
 		EntityTransaction tx = em.getTransaction();
-		Mart m = null;
-
 		tx.begin();
-		m = Mart.builder().martName(martName).location(location).build();
+		Mart m = Mart.builder().martName(martName).location(location).orders(new ArrayList<>()).build();
 		em.persist(m);
 		tx.commit();
 		return m;
@@ -27,7 +30,7 @@ public class MartDAO {
 
 	public static List<Mart> findAll(EntityManager em) throws SQLException, NoResultException {
 		List<Mart> m = em.createNativeQuery("select * from mart", Mart.class).getResultList();
-		if (m.size()==0) {
+		if (m.size() == 0) {
 			throw new NoResultException();
 		}
 		return m;
@@ -36,7 +39,7 @@ public class MartDAO {
 	public static Mart findMart(int martNumber, EntityManager em) throws SQLException, NoResultException {
 		Mart m = (Mart) em.createNativeQuery("select * from mart where mtno= ?", Mart.class).setParameter(1, martNumber)
 				.getSingleResult();
-		if (m==null) {
+		if (m == null) {
 			throw new NoResultException();
 		}
 		return m;
@@ -45,7 +48,7 @@ public class MartDAO {
 	public static List<Mart> findMart(String martName, EntityManager em) throws SQLException, NoResultException {
 		List<Mart> m = em.createNativeQuery("select * from Mart where mtname= ?", Mart.class).setParameter(1, martName)
 				.getResultList();
-		if (m.size()==0) {
+		if (m.size() == 0) {
 			throw new NoResultException();
 		}
 		return m;
@@ -79,6 +82,7 @@ public class MartDAO {
 		return false;
 	}
 	
+<<<<<<< HEAD
   @Test
   public void test() {
       EntityManager em = PublicCommon.getEntityManager();
@@ -94,4 +98,10 @@ public class MartDAO {
       }
   }
     
+=======
+	public static List<Orders> getOrders(int martNumber, EntityManager em) throws SQLException, NoResultException {
+		Mart m = findMart(martNumber, em);
+		return m.getOrders();
+	}
+>>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
 }
