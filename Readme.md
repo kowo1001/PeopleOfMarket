@@ -10,12 +10,19 @@
 
 ## SERVICE
 
+관리자
+  - 마트 검색
+  - 마트 추가
+  - 마트 수정
+  - 마트 삭제
 
+마트사장
+  - 마트 수정
+  - 주문 보기
 
-
-
-
-
+회원
+  - 주문
+  
 ## 참고
 테이블 내부 구성 엑셀 문서 링크
 https://docs.google.com/spreadsheets/d/1tmYgHqzKEgwfonAy3ZgYwQT_1SNpU3c6bemWXRXWOFw/edit#gid=0
