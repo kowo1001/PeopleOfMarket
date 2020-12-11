@@ -15,14 +15,10 @@ import lombok.Setter;
 import lombok.ToString;
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-<<<<<<< HEAD
-@ToString
-=======
+
 @ToString(exclude="orders")
->>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
 @Builder
 
 @Entity

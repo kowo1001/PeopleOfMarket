@@ -6,10 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import model.dao.MartDAO;
-<<<<<<< HEAD
-=======
 import model.dao.OrdersDAO;
->>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
+
 import model.dao.ProductDAO;
 import model.domain.Mart;
 import model.domain.Orders;
@@ -127,70 +125,6 @@ public class PeopleOfMarketController {
 			em.close();
 		}
 	}
-
-	public static void findAllProduct() {
-		EntityManager em = PublicCommon.getEntityManager();
-		try {
-			ProductDAO.findAllProduct(em);
-		} catch (SQLException e) {
-			RunningEndView.showError("오류");
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
-
-	public static void findProduct(String productName) {
-		EntityManager em = PublicCommon.getEntityManager();
-
-		try {
-			ProductDAO.findProduct(productName, em);
-		} catch (SQLException e) {
-			RunningEndView.showError("오류");
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
-
-	public static void updateProduct(int productNo, String productName, int price) {
-		EntityManager em = PublicCommon.getEntityManager();
-
-		try {
-			ProductDAO.updateProduct(productName, price, productNo, em);
-		} catch (SQLException e) {
-			RunningEndView.showError("오류");
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
-
-	public static void deleteProduct(int productNo) {
-		EntityManager em = PublicCommon.getEntityManager();
-
-		try {
-			ProductDAO.deleteProduct(productNo, em);
-		} catch (SQLException e) {
-			RunningEndView.showError("오류");
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
-	
-<<<<<<< HEAD
-	public static void addProduct(int productNo, String productName, int price) {
-		EntityManager em = PublicCommon.getEntityManager();
-		try {
-			ProductDAO.createProduct(productNo, productName, price, em);
-		} catch (SQLException e) {
-			RunningEndView.showError("오류");
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
 	
 	public static void findAllProduct() {
 		EntityManager em = PublicCommon.getEntityManager();
@@ -240,7 +174,9 @@ public class PeopleOfMarketController {
 			e.printStackTrace();
 		} finally {
 			em.close();
-=======
+		}
+	}
+		
 	public static void getProductOrders(int productNumber) {
 		EntityManager em = PublicCommon.getEntityManager();
 		try {
@@ -267,7 +203,6 @@ public class PeopleOfMarketController {
 		} catch (SQLException e) {
 			RunningEndView.showError("오류");
  			e.printStackTrace();
->>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
 		}
 	}
 }

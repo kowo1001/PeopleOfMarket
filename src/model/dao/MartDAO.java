@@ -11,11 +11,9 @@ import javax.persistence.NoResultException;
 import org.junit.jupiter.api.Test;
 
 import model.domain.Mart;
-<<<<<<< HEAD
-import model.util.PublicCommon;
-=======
 import model.domain.Orders;
->>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
+import model.util.PublicCommon;
+
 
 public class MartDAO {
 
@@ -82,26 +80,8 @@ public class MartDAO {
 		return false;
 	}
 	
-<<<<<<< HEAD
-  @Test
-  public void test() {
-      EntityManager em = PublicCommon.getEntityManager();
-      try {
-            Mart m = addMart("롯데마트", "마포구",em);
-            System.out.println(m);
-            System.out.println("----------------------------------");
-          
-      }catch(Exception e) {
-          e.printStackTrace();
-      }finally {
-          em.close();
-      }
-  }
-    
-=======
 	public static List<Orders> getOrders(int martNumber, EntityManager em) throws SQLException, NoResultException {
 		Mart m = findMart(martNumber, em);
 		return m.getOrders();
 	}
->>>>>>> a2e887067f04e4f54aa28bc829d4be0e4ff338a4
 }
