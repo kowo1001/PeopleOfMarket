@@ -43,18 +43,35 @@ public class OrdersDAO {
 	}
 
 	public static boolean updateOrders(int orderId, String pickupDate, String pickupTime, EntityManager em)
-			throws SQLException, NoResultException {
+			throws NoResultException {
+		boolean result = false;
+		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-
-		Orders o = findOrdersByOrderId(orderId, em);
-		if (o != null) {
-			o.setPickupDate(pickupDate);
-			o.setPickupTime(pickupTime);
-			tx.commit();
-			return true;
+		int updatedCount = em.createNativeQuery("update orders set pdate = ?, ptime = ? where oid = ?", Orders.class)
+				.setParameter(1, pickupDate).setParameter(2, pickupTime).setParameter(3,orderId).executeUpdate();
+		tx.commit();
+		if(updatedCount!=0) {
+			result = true;
+			return result;
+		}else {
+			throw new NoResultException();
 		}
-		return false;
+	}
+	
+	public static boolean deleteOrder(int orderId, EntityManager em) throws NoResultException{
+		boolean result = false;
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		int deletedCount = em.createNativeQuery("delete from orders where oid = ?", Orders.class)
+				.setParameter(1,orderId).executeUpdate();
+		tx.commit();
+		if(deletedCount != 0) {
+			result =true;
+			return result;
+		}else {
+			throw new NoResultException();
+		}
 	}
 }
 

@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,10 +25,11 @@ import lombok.ToString;
 @Builder
 
 @Entity
+@SequenceGenerator(name="product_id_seq_gen", sequenceName="product_id_seq", initialValue=1, allocationSize=50)
 public class Product {
 	@Id
-	
-	@Column(name="pno", precision=20, nullable=false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="product_id_seq_gen")
+	@Column(name="pno", precision=20)
 	private int productNo;
 	
 	@Column(name="pname", nullable=false, length=40)

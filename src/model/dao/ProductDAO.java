@@ -16,22 +16,23 @@ import model.util.PublicCommon;
 
 public class ProductDAO {
 	// create
-	public static Product createProduct(int productNo, String productName, int price, EntityManager em)
+	public static Product createProduct(String productName, int price, EntityManager em)
 			throws SQLException {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Product p = null;
-
-		p = Product.builder().productNo(productNo).productName(productName).price(price).orders(new ArrayList<>()).build();
-
+		Product p = Product.builder().productName(productName).price(price).orders(new ArrayList<>()).build();
 		em.persist(p);
+		tx.commit();
 		return p;
 	}
 
 	// select
-	public static void findAllProduct(EntityManager em) throws SQLException {
+	public static List<Product> findAllProduct(EntityManager em) throws SQLException {
 		List<Product> p = em.createNativeQuery("select * from Product", Product.class).getResultList();
-		p.forEach(v -> System.out.println(v));
+		if(p.size() == 0) {
+			throw new NoResultException();
+		}
+		return p;
 	}
 
 	public static Product findProduct(int productNo, EntityManager em) throws SQLException {
@@ -45,42 +46,47 @@ public class ProductDAO {
 		return p.get(0);
 	}
 
-	public static void findProduct(String productName, EntityManager em) throws SQLException {
+	public static List<Product> findProduct(String productName, EntityManager em) throws SQLException {
 		List<Product> p = em.createNativeQuery("select * from Product where pname=?", Product.class)
 				.setParameter(1, productName).getResultList();
-		p.forEach(v -> System.out.println(v));
 		if (p.size() == 0) {
-			System.out.println("검색 요청한 제품은 미존재합니다");
+			throw new NoResultException();
 		}
+		return p;
 	}
 
 	// update
-	public static void updateProduct(String productName, int price, int productNo, EntityManager em)
+	public static boolean updateProduct(String productName, int price, int productNo, EntityManager em)
 			throws SQLException {
+		boolean result = false;
+		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		int result = em.createNativeQuery("update product set pname = ?, price = ? where pno = ?", Product.class)
+		int updatedCount = em.createNativeQuery("update product set pname = ?, price = ? where pno = ?", Product.class)
 				.setParameter(1, productName).setParameter(2, price).setParameter(3, productNo).executeUpdate();
-		if (result != 0) {
-			System.out.println("---업데이트 완료---");
-		} else {
-			System.out.println("---업데이트 실패---");
-		}
 		tx.commit();
+		if(updatedCount!=0) {
+			result = true;
+			return result;
+		}else {
+			throw new NoResultException();
+		}
 	}
 
 	// delete
-	public static void deleteProduct(int productNo, EntityManager em) throws SQLException {
+	public static boolean deleteProduct(int productNo, EntityManager em) throws SQLException {
+		boolean result = false;
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		int result = em.createNativeQuery("delete from Product where pno=?", Product.class).setParameter(1, productNo)
+		int deletedCount = em.createNativeQuery("delete from Product where pno=?", Product.class).setParameter(1, productNo)
 				.executeUpdate();
-		if (result != 0) {
-			System.out.println("--- 삭제 완료---");
-		} else {
-			System.out.println("--- 삭제 실패---");
-		}
 		tx.commit();
+		if (deletedCount != 0) {
+			result = true;
+			return result;
+		} else {
+			throw new NoResultException();
+		}
 	}
 	
 	public static List<Orders> getOrders(int productNo, EntityManager em) throws SQLException, NoResultException {

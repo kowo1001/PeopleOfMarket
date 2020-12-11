@@ -27,10 +27,9 @@ import lombok.ToString;
 @Entity
 @SequenceGenerator(name="orders_id_seq_gen", sequenceName="orders_id_seq", initialValue=1, allocationSize=50)
 public class Orders {
-    
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="orders_id_seq_gen")
     @Id
-    @Column(name="oid", nullable=false, precision=10)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="orders_id_seq_gen")
+    @Column(name="oid", precision=10)
     int orderId;//일련번호
     
     @Column(name="ono", nullable=false, precision=10)
