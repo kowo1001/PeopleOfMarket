@@ -35,4 +35,5 @@ public class Mart {
 	
 	@Column(name="loc", nullable=false, length=40)
 	private String location;
+
 }

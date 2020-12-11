@@ -7,7 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 
+import org.junit.jupiter.api.Test;
+
 import model.domain.Mart;
+import model.util.PublicCommon;
 
 public class MartDAO {
 
@@ -75,4 +78,20 @@ public class MartDAO {
 		}
 		return false;
 	}
+	
+  @Test
+  public void test() {
+      EntityManager em = PublicCommon.getEntityManager();
+      try {
+            Mart m = addMart("롯데마트", "마포구",em);
+            System.out.println(m);
+            System.out.println("----------------------------------");
+          
+      }catch(Exception e) {
+          e.printStackTrace();
+      }finally {
+          em.close();
+      }
+  }
+    
 }

@@ -1,9 +1,12 @@
 package controller;
 
+import java.sql.SQLException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import model.dao.MartDAO;
+import model.dao.ProductDAO;
 import model.domain.Mart;
 import model.util.PublicCommon;
 import view.RunningEndView;
@@ -16,7 +19,7 @@ public class PeopleOfMarketController {
 			Mart m = MartDAO.addMart(martName, location, em);
 			RunningEndView.allView(m);
 		} catch (Exception e) {
-			RunningEndView.showError("오류");
+			RunningEndView.showError("오류"); 
 			e.printStackTrace();
 		} finally {
 			em.close();
@@ -94,7 +97,66 @@ public class PeopleOfMarketController {
 	}
 	
 	
+	public static void addProduct(int productNo, String productName, int price) {
+		EntityManager em = PublicCommon.getEntityManager();
+		try {
+			ProductDAO.createProduct(productNo, productName, price, em);
+		} catch (SQLException e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
 	
+	public static void findAllProduct() {
+		EntityManager em = PublicCommon.getEntityManager();
+		try {
+			ProductDAO.findAllProduct(em);
+		} catch (SQLException e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
 	
+	public static void findProduct(String productName) {
+		EntityManager em = PublicCommon.getEntityManager();
+		
+		try {
+			ProductDAO.findProduct(productName, em);
+		} catch (SQLException e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
 	
+	public static void updateProduct(int productNo, String productName, int price) {
+		EntityManager em = PublicCommon.getEntityManager();
+		
+		try {
+			ProductDAO.updateProduct(productName, price, productNo, em);
+		} catch (SQLException e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
+	
+	public static void deleteProduct(int productNo) {
+		EntityManager em = PublicCommon.getEntityManager();
+
+		try {
+			ProductDAO.deleteProduct(productNo, em);
+		} catch (SQLException e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
 }
