@@ -1,4 +1,4 @@
-/model/
 /controller/
-/view/
-/META-INF/
+/model/
+/log4j.persistance
+/log4j.properties

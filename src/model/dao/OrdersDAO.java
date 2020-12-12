@@ -13,12 +13,12 @@ import model.domain.Product;
 
 
 public class OrdersDAO {
-  public static Orders createOrder(Mart m, Product p, int amount, int totalPrice, String pickupDate, String pickupTime, char ispickup, EntityManager em) throws SQLException {
+  public static Orders createOrder(int orderNumber, Mart m, Product p, int amount, int totalPrice, String pickupDate, String pickupTime, char ispickup, EntityManager em) throws SQLException {
       EntityTransaction tx = em.getTransaction();
       Orders o = null;
       
       tx.begin();
-      o = Orders.builder().martNumber(m).productNumber(p).amount(amount).totalPrice(totalPrice).pickupDate(pickupDate).pickupTime(pickupTime).ispickup(ispickup).build();
+      o = Orders.builder().orderNumber(orderNumber).martNumber(m).productNumber(p).amount(amount).totalPrice(totalPrice).pickupDate(pickupDate).pickupTime(pickupTime).ispickup(ispickup).build();
       em.persist(o);
       tx.commit();
       return o;
@@ -43,7 +43,7 @@ public class OrdersDAO {
 	}
 
 	public static boolean updateOrders(int orderId, String pickupDate, String pickupTime, EntityManager em)
-			throws NoResultException {
+			throws SQLException, NoResultException {
 		boolean result = false;
 		
 		EntityTransaction tx = em.getTransaction();
@@ -59,12 +59,41 @@ public class OrdersDAO {
 		}
 	}
 	
-	public static boolean deleteOrder(int orderId, EntityManager em) throws NoResultException{
+	public static boolean deleteOrder(int orderId, EntityManager em) throws SQLException, NoResultException{
 		boolean result = false;
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		int deletedCount = em.createNativeQuery("delete from orders where oid = ?", Orders.class)
 				.setParameter(1,orderId).executeUpdate();
+		tx.commit();
+		if(deletedCount != 0) {
+			result =true;
+			return result;
+		}else {
+			throw new NoResultException();
+		}
+	}
+	
+	public static boolean deleteOrderByOno(int orderNumber, EntityManager em) throws SQLException, NoResultException{
+		boolean result = false;
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		int deletedCount = em.createNativeQuery("delete from orders where ono = ?", Orders.class)
+				.setParameter(1,orderNumber).executeUpdate();
+		tx.commit();
+		if(deletedCount != 0) {
+			result =true;
+			return result;
+		}else {
+			throw new NoResultException();
+		}
+	}
+	
+	public static boolean endOrder(int orderNumber, EntityManager em) throws SQLException, NoResultException{
+		boolean result = false;
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		int deletedCount = em.createNativeQuery("update orders set ispickup=0 where ono = ?", Orders.class).setParameter(1,orderNumber).executeUpdate();
 		tx.commit();
 		if(deletedCount != 0) {
 			result =true;
