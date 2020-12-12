@@ -285,6 +285,24 @@ public class PeopleOfMarketController {
 		}
 	}
 
+	public void findOrdersByOrderNumber(int orderNumber) {
+		
+		EntityManager em = PublicCommon.getEntityManager();
+		try {
+			int tot = OrdersDAO.getTotalPriceForOrderNumber(orderNumber, em);
+			OrdersDAO.findOrdersByOrderNumber(orderNumber, em).forEach(v -> RunningEndView.allView(v));
+			RunningEndView.showMessage("주문번호 " + orderNumber + "의 전체 가격은 " + tot + "원 입니다.");
+
+		} catch (NoResultException e) {
+			RunningEndView.showError("주문 정보가 존재하지 않습니다.");
+		} catch (Exception e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
+
 	public void updateOrders(int orderId, String pickupDate, String pickupTime) {
 
 		EntityManager em = PublicCommon.getEntityManager();
