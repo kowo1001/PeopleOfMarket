@@ -46,8 +46,6 @@ public class PeopleOfMarketController {
 		log.info("모든 마트 검색");
 		try {
 			MartDAO.findAll(em).forEach(m -> RunningEndView.allView(m));
-		} catch (NoResultException ne) {
-			RunningEndView.showError("마트 정보가 존재하지 않습니다.");
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -62,9 +60,6 @@ public class PeopleOfMarketController {
 		log.info("마트 검색 : " + martName);
 		try {
 			MartDAO.findMart(martName, em).forEach(m -> RunningEndView.allView(m));
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 마트입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -83,9 +78,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("수정 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 마트입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -104,9 +96,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("삭제실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 마트입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -121,9 +110,6 @@ public class PeopleOfMarketController {
 		log.info("마트별 주문 검색 : " + martNumber);
 		try {
 			MartDAO.getOrders(martNumber, em).forEach(m -> RunningEndView.allView(m));
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 마트입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -136,9 +122,6 @@ public class PeopleOfMarketController {
 		log.info("마트별 주문 검색 : " + martNumber);
 		try {
 			MartDAO.getOrders(martNumber, em).forEach(m -> RunningEndView.allView(m));
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 마트입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -166,8 +149,6 @@ public class PeopleOfMarketController {
 		log.info("모든 상품 조회");
 		try {
 			ProductDAO.findAllProduct(em).forEach(v -> RunningEndView.allView(v));
-		} catch (NoResultException e) {
-			RunningEndView.showError("상품 정보가 존재하지 않습니다.");
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -182,9 +163,6 @@ public class PeopleOfMarketController {
 		log.info("상품 검색 : " + productName);
 		try {
 			ProductDAO.findProduct(productName, em).forEach(v -> RunningEndView.allView(v));
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 상품입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -203,9 +181,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("수정 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 상품입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -224,9 +199,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("삭제 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 상품입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -241,9 +213,6 @@ public class PeopleOfMarketController {
 		log.info("상품별 주문조회 : " + productNumber);
 		try {
 			ProductDAO.getOrders(productNumber, em).forEach(m -> RunningEndView.allView(m));
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 마트입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -260,9 +229,6 @@ public class PeopleOfMarketController {
 					p.getPrice() * amount, pickupDate, pickupTime, ispickup, em);
 			log.info("주문 : " + o);
 			RunningEndView.allView(o);
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 주문입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -275,8 +241,6 @@ public class PeopleOfMarketController {
 		log.info("모든 주문 조회");
 		try {
 			OrdersDAO.findAll(em).forEach(v -> RunningEndView.allView(v));
-		} catch (NoResultException e) {
-			RunningEndView.showError("주문 정보가 존재하지 않습니다.");
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -295,9 +259,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("수정 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 주문입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -316,9 +277,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("삭제 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 상품입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -337,9 +295,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("삭제 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 주문입니다.");
-			e.printStackTrace();
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -358,9 +313,6 @@ public class PeopleOfMarketController {
 			} else {
 				RunningEndView.showError("수령 실패");
 			}
-		} catch (NoResultException e) {
-			RunningEndView.showError("존재하지 않는 주문입니다.");
-			e.printStackTrace();
 		} catch (SQLException e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();

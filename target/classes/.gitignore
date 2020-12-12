@@ -1,4 +1,3 @@
-/controller/
+/exception/
 /model/
-/log4j.persistance
-/log4j.properties
+/controller/

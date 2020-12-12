@@ -26,7 +26,10 @@ public class OrdersDAO {
 
 	public static List<Orders> findAll(EntityManager em) throws SQLException, NoResultException {
 		List<Orders> o = em.createNativeQuery("select * from orders", Orders.class).getResultList();
-		return o;
+		if (o.size() != 0) {
+			return o;
+		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 
 	public static Orders findOrdersByOrderId(int orderId, EntityManager em) throws SQLException, NoResultException {
@@ -44,63 +47,54 @@ public class OrdersDAO {
 
 	public static boolean updateOrders(int orderId, String pickupDate, String pickupTime, EntityManager em)
 			throws SQLException, NoResultException {
-		boolean result = false;
-		
+
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		int updatedCount = em.createNativeQuery("update orders set pdate = ?, ptime = ? where oid = ?", Orders.class)
 				.setParameter(1, pickupDate).setParameter(2, pickupTime).setParameter(3,orderId).executeUpdate();
 		tx.commit();
 		if(updatedCount!=0) {
-			result = true;
-			return result;
-		}else {
-			throw new NoResultException();
+			return true;
 		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 	
 	public static boolean deleteOrder(int orderId, EntityManager em) throws SQLException, NoResultException{
-		boolean result = false;
+
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		int deletedCount = em.createNativeQuery("delete from orders where oid = ?", Orders.class)
 				.setParameter(1,orderId).executeUpdate();
 		tx.commit();
 		if(deletedCount != 0) {
-			result =true;
-			return result;
-		}else {
-			throw new NoResultException();
+			return true;
 		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 	
 	public static boolean deleteOrderByOno(int orderNumber, EntityManager em) throws SQLException, NoResultException{
-		boolean result = false;
+
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		int deletedCount = em.createNativeQuery("delete from orders where ono = ?", Orders.class)
 				.setParameter(1,orderNumber).executeUpdate();
 		tx.commit();
 		if(deletedCount != 0) {
-			result =true;
-			return result;
-		}else {
-			throw new NoResultException();
+			return true;
 		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 	
 	public static boolean endOrder(int orderNumber, EntityManager em) throws SQLException, NoResultException{
-		boolean result = false;
+
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		int deletedCount = em.createNativeQuery("update orders set ispickup=0 where ono = ?", Orders.class).setParameter(1,orderNumber).executeUpdate();
 		tx.commit();
 		if(deletedCount != 0) {
-			result =true;
-			return result;
-		}else {
-			throw new NoResultException();
+			return true;
 		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 }
 

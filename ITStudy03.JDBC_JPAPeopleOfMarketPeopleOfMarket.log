@@ -139,3 +139,101 @@
 2020-12-12 18:36:39,445  INFO - 모든 주문 조회
 2020-12-12 18:36:39,445  INFO - 수령 완료 : 2
 2020-12-12 18:36:39,445  INFO - 모든 주문 조회
+2020-12-12 22:33:08,080  INFO - HHH000204: Processing PersistenceUnitInfo [name: PeopleOfMarket]
+2020-12-12 22:33:08,348  INFO - HHH000412: Hibernate Core {5.4.2.Final}
+2020-12-12 22:33:08,546  INFO - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-12 22:33:08,891  WARN - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-12-12 22:33:08,968  INFO - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@127.0.0.1:1521:xe]
+2020-12-12 22:33:08,968  INFO - HHH10001001: Connection properties: {user=SCOTT, password=****}
+2020-12-12 22:33:08,968  INFO - HHH10001003: Autocommit mode: false
+2020-12-12 22:33:08,972  INFO - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-12-12 22:33:09,587  INFO - HHH000400: Using dialect: org.hibernate.dialect.OracleDialect
+2020-12-12 22:33:09,592  WARN - HHH000063: The Oracle9Dialect dialect has been deprecated; use either Oracle9iDialect or Oracle10gDialect instead
+2020-12-12 22:33:09,594  WARN - HHH000064: The OracleDialect dialect has been deprecated; use Oracle8iDialect instead
+2020-12-12 22:33:10,572  INFO - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@21719a0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-12-12 22:33:10,689  INFO - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6b3871d6] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-12-12 22:33:10,785  INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-12 22:33:10,891  INFO - 마트 추가
+2020-12-12 22:33:10,976  INFO - 마트 추가
+2020-12-12 22:33:10,983  INFO - 마트 추가
+2020-12-12 22:33:10,986  INFO - 마트 추가
+2020-12-12 22:33:10,988  INFO - 마트 추가
+2020-12-12 22:33:10,990  INFO - 모든 마트 검색
+2020-12-12 22:33:11,035  INFO - 마트 검색 : GS마트
+2020-12-12 22:33:11,045  INFO - 마트 수정 : 2 -> 레몬마트마포구
+2020-12-12 22:33:11,053  INFO - 모든 마트 검색
+2020-12-12 22:33:11,055  INFO - 상품 추가 : 백산수1L 1200원
+2020-12-12 22:33:11,064  INFO - 상품 추가 : 에비앙1L 10000원
+2020-12-12 22:33:11,067  INFO - 상품 추가 : 삼다수1L 1400원
+2020-12-12 22:33:11,069  INFO - 상품 추가 : 몽쉘통통12개입 3000원
+2020-12-12 22:33:11,071  INFO - 상품 추가 : 초코파이12개입 3000원
+2020-12-12 22:33:11,073  INFO - 상품 추가 : 콘푸라이트 4000원
+2020-12-12 22:33:11,074  INFO - 상품 추가 : 오곡코코볼 4000원
+2020-12-12 22:33:11,076  INFO - 상품 추가 : 바나나 3000원
+2020-12-12 22:33:11,078  INFO - 상품 추가 : 벗겨먹는고오스 800원
+2020-12-12 22:33:11,080  INFO - 모든 상품 조회
+2020-12-12 22:33:11,087  INFO - 상품 검색 : 벗겨먹는고오스
+2020-12-12 22:33:11,090  INFO - 상품 수정 : 8 -> 사과 1500원
+2020-12-12 22:33:11,095  INFO - 모든 상품 조회
+2020-12-12 22:33:11,109  INFO - 주문 : Orders(orderId=1, orderNumber=1, martNumber=Mart(martNumber=2, martName=레몬마트, location=마포구), productNumber=Product(productNo=9, productName=벗겨먹는고오스, price=800), amount=10, totalPrice=8000, pickupDate=20/12/05, pickupTime=08:30, ispickup=1)
+2020-12-12 22:33:11,115  INFO - 주문 : Orders(orderId=2, orderNumber=1, martNumber=Mart(martNumber=2, martName=레몬마트, location=마포구), productNumber=Product(productNo=8, productName=사과, price=1500), amount=10, totalPrice=15000, pickupDate=20/12/05, pickupTime=08:30, ispickup=1)
+2020-12-12 22:33:11,124  INFO - 주문 : Orders(orderId=3, orderNumber=2, martNumber=Mart(martNumber=3, martName=롯데마트, location=서초구), productNumber=Product(productNo=6, productName=콘푸라이트, price=4000), amount=1, totalPrice=4000, pickupDate=20/12/05, pickupTime=08:30, ispickup=1)
+2020-12-12 22:33:11,125  INFO - 모든 주문 조회
+2020-12-12 22:33:11,151  INFO - 마트별 주문 검색 : 2
+2020-12-12 22:33:11,173  INFO - 주문 수정 : 2 -> 20/12/06 09:30
+2020-12-12 22:33:11,214  INFO - 모든 주문 조회
+2020-12-12 22:33:11,223  INFO - 상품 주문 취소 : 2
+2020-12-12 22:33:11,226  INFO - 모든 주문 조회
+2020-12-12 22:33:11,240  INFO - 주문 전체 취소 : 1
+2020-12-12 22:33:11,245  INFO - 모든 주문 조회
+2020-12-12 22:33:11,265  INFO - 수령 완료 : 2
+2020-12-12 22:33:11,271  INFO - 모든 주문 조회
+2020-12-12 23:11:21,267  INFO - HHH000204: Processing PersistenceUnitInfo [name: PeopleOfMarket]
+2020-12-12 23:11:21,411  INFO - HHH000412: Hibernate Core {5.4.2.Final}
+2020-12-12 23:11:21,606  INFO - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-12 23:11:21,944  WARN - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-12-12 23:11:22,019  INFO - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@127.0.0.1:1521:xe]
+2020-12-12 23:11:22,019  INFO - HHH10001001: Connection properties: {user=SCOTT, password=****}
+2020-12-12 23:11:22,019  INFO - HHH10001003: Autocommit mode: false
+2020-12-12 23:11:22,022  INFO - HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-12-12 23:11:22,515  INFO - HHH000400: Using dialect: org.hibernate.dialect.OracleDialect
+2020-12-12 23:11:22,520  WARN - HHH000063: The Oracle9Dialect dialect has been deprecated; use either Oracle9iDialect or Oracle10gDialect instead
+2020-12-12 23:11:22,521  WARN - HHH000064: The OracleDialect dialect has been deprecated; use Oracle8iDialect instead
+2020-12-12 23:11:23,459  INFO - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@65cc8228] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-12-12 23:11:23,546  INFO - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@12a160c2] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-12-12 23:11:23,616  INFO - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-12 23:11:23,741  INFO - 마트 추가
+2020-12-12 23:11:23,833  INFO - 마트 추가
+2020-12-12 23:11:23,839  INFO - 마트 추가
+2020-12-12 23:11:23,842  INFO - 마트 추가
+2020-12-12 23:11:23,843  INFO - 마트 추가
+2020-12-12 23:11:23,845  INFO - 모든 마트 검색
+2020-12-12 23:11:23,897  INFO - 마트 검색 : GS마트
+2020-12-12 23:11:23,906  INFO - 마트 수정 : 2 -> 레몬마트마포구
+2020-12-12 23:11:23,913  INFO - 모든 마트 검색
+2020-12-12 23:11:23,916  INFO - 상품 추가 : 백산수1L 1200원
+2020-12-12 23:11:23,923  INFO - 상품 추가 : 에비앙1L 10000원
+2020-12-12 23:11:23,925  INFO - 상품 추가 : 삼다수1L 1400원
+2020-12-12 23:11:23,928  INFO - 상품 추가 : 몽쉘통통12개입 3000원
+2020-12-12 23:11:23,930  INFO - 상품 추가 : 초코파이12개입 3000원
+2020-12-12 23:11:23,933  INFO - 상품 추가 : 콘푸라이트 4000원
+2020-12-12 23:11:23,936  INFO - 상품 추가 : 오곡코코볼 4000원
+2020-12-12 23:11:23,938  INFO - 상품 추가 : 바나나 3000원
+2020-12-12 23:11:23,941  INFO - 상품 추가 : 벗겨먹는고오스 800원
+2020-12-12 23:11:23,943  INFO - 모든 상품 조회
+2020-12-12 23:11:23,948  INFO - 상품 검색 : 벗겨먹는고오스
+2020-12-12 23:11:23,952  INFO - 상품 수정 : 8 -> 사과 1500원
+2020-12-12 23:11:23,958  INFO - 모든 상품 조회
+2020-12-12 23:11:23,974  INFO - 주문 : Orders(orderId=1, orderNumber=1, martNumber=Mart(martNumber=2, martName=레몬마트, location=마포구), productNumber=Product(productNo=9, productName=벗겨먹는고오스, price=800), amount=10, totalPrice=8000, pickupDate=20/12/05, pickupTime=08:30, ispickup=1)
+2020-12-12 23:11:23,978  INFO - 주문 : Orders(orderId=2, orderNumber=1, martNumber=Mart(martNumber=2, martName=레몬마트, location=마포구), productNumber=Product(productNo=8, productName=사과, price=1500), amount=10, totalPrice=15000, pickupDate=20/12/05, pickupTime=08:30, ispickup=1)
+2020-12-12 23:11:23,983  INFO - 주문 : Orders(orderId=3, orderNumber=2, martNumber=Mart(martNumber=3, martName=롯데마트, location=서초구), productNumber=Product(productNo=6, productName=콘푸라이트, price=4000), amount=1, totalPrice=4000, pickupDate=20/12/05, pickupTime=08:30, ispickup=1)
+2020-12-12 23:11:23,983  INFO - 모든 주문 조회
+2020-12-12 23:11:24,007  INFO - 마트별 주문 검색 : 2
+2020-12-12 23:11:24,020  INFO - 주문 수정 : 2 -> 20/12/06 09:30
+2020-12-12 23:11:24,041  INFO - 모든 주문 조회
+2020-12-12 23:11:24,056  INFO - 상품 주문 취소 : 2
+2020-12-12 23:11:24,062  INFO - 모든 주문 조회
+2020-12-12 23:11:24,074  INFO - 주문 전체 취소 : 1
+2020-12-12 23:11:24,079  INFO - 모든 주문 조회
+2020-12-12 23:11:24,090  INFO - 수령 완료 : 2
+2020-12-12 23:11:24,093  INFO - 모든 주문 조회

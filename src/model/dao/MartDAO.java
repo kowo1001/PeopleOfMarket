@@ -29,7 +29,7 @@ public class MartDAO {
 	public static List<Mart> findAll(EntityManager em) throws SQLException, NoResultException {
 		List<Mart> m = em.createNativeQuery("select * from mart", Mart.class).getResultList();
 		if (m.size() == 0) {
-			throw new NoResultException();
+			throw new NoResultException("마트정보가 존재하지 않습니다.");
 		}
 		return m;
 	}
@@ -47,7 +47,7 @@ public class MartDAO {
 		List<Mart> m = em.createNativeQuery("select * from Mart where mtname= ?", Mart.class).setParameter(1, martName)
 				.getResultList();
 		if (m.size() == 0) {
-			throw new NoResultException();
+			throw new NoResultException("마트정보가 존재하지 않습니다.");
 		}
 		return m;
 	}
@@ -64,7 +64,7 @@ public class MartDAO {
 			tx.commit();
 			return true;
 		}
-		return false;
+		throw new NoResultException("마트정보가 존재하지 않습니다.");
 	}
 
 	public static boolean deleteMart(int martNumber, EntityManager em) throws SQLException, NoResultException {
@@ -77,11 +77,14 @@ public class MartDAO {
 			tx.commit();
 			return true;
 		}
-		return false;
+		throw new NoResultException("마트정보가 존재하지 않습니다.");
 	}
 	
 	public static List<Orders> getOrders(int martNumber, EntityManager em) throws SQLException, NoResultException {
 		Mart m = findMart(martNumber, em);
-		return m.getOrders();
+		if (m != null) {
+			return m.getOrders();
+		}
+		throw new NoResultException("주문정보가 존재하지 않습니다.");
 	}
 }

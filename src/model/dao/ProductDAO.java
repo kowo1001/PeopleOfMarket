@@ -27,39 +27,37 @@ public class ProductDAO {
 	}
 
 	// select
-	public static List<Product> findAllProduct(EntityManager em) throws SQLException {
+	public static List<Product> findAllProduct(EntityManager em) throws SQLException,NoResultException {
 		List<Product> p = em.createNativeQuery("select * from Product", Product.class).getResultList();
-		if(p.size() == 0) {
-			throw new NoResultException();
+		if(p.size() != 0) {
+			return p;
 		}
-		return p;
+		throw new NoResultException("상품 정보가 존재하지 않습니다");
 	}
 
-	public static Product findProduct(int productNo, EntityManager em) throws SQLException {
+	public static Product findProduct(int productNo, EntityManager em) throws SQLException,NoResultException {
 		List<Product> p = em.createNativeQuery("select * from Product where pno=?", Product.class)
 				.setParameter(1, productNo).getResultList();
 		p.forEach(v -> System.out.println(v));
-		if (p.size() == 0) {
-			System.out.println("검색 요청한 제품은 미존재합니다");
+		if (p.size() != 0) {
+			return p.get(0);
 		}
-
-		return p.get(0);
+		throw new NoResultException("상품정보가 존재하지 않습니다");
 	}
 
-	public static List<Product> findProduct(String productName, EntityManager em) throws SQLException {
+	public static List<Product> findProduct(String productName, EntityManager em) throws SQLException,NoResultException {
 		List<Product> p = em.createNativeQuery("select * from Product where pname=?", Product.class)
 				.setParameter(1, productName).getResultList();
-		if (p.size() == 0) {
-			throw new NoResultException();
+		if (p.size() != 0) {
+			return p;
 		}
-		return p;
+		throw new NoResultException("상품정보가 존재하지 않습니다");
 	}
 
 	// update
 	public static boolean updateProduct(String productName, int price, int productNo, EntityManager em)
-			throws SQLException {
+			throws SQLException,NoResultException {
 		boolean result = false;
-		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		int updatedCount = em.createNativeQuery("update product set pname = ?, price = ? where pno = ?", Product.class)
@@ -68,13 +66,12 @@ public class ProductDAO {
 		if(updatedCount!=0) {
 			result = true;
 			return result;
-		}else {
-			throw new NoResultException();
 		}
+		throw new NoResultException("상품정보가 존재하지 않습니다");
 	}
 
 	// delete
-	public static boolean deleteProduct(int productNo, EntityManager em) throws SQLException {
+	public static boolean deleteProduct(int productNo, EntityManager em) throws SQLException,NoResultException {
 		boolean result = false;
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -84,14 +81,16 @@ public class ProductDAO {
 		if (deletedCount != 0) {
 			result = true;
 			return result;
-		} else {
-			throw new NoResultException();
 		}
+		throw new NoResultException("상품정보가 존재하지 않습니다");
 	}
 	
 	public static List<Orders> getOrders(int productNo, EntityManager em) throws SQLException, NoResultException {
 		Product p = (Product)em.createNativeQuery("select * from Product where pno=?", Product.class)
 				.setParameter(1, productNo).getSingleResult();
-		return p.getOrders();
+		if (p != null) {
+			return p.getOrders();
+		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 }
