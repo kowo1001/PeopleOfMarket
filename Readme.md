@@ -2,6 +2,7 @@
 
 ## 마트의 민족
 코로나 시대에 누가 마트에서 물건 하나하나 골라서 장을 보나?
+
 미리 어플을 통해 장을 보면 마트에서 물건을 미리 포장해주고 고객은 마트에 들려 간단하게 들고가면 된다.
 
 ## Intruduction
@@ -42,9 +43,9 @@
 
 ## ✍️ Author
  Team MartOfPeople
-  - 최태열
-  - 김영호
-  - 장종욱
+  - 최태열 [(ta-ye)](https://github.com/ta-ye)
+  - 김영호 [(SeonghoKim)](https://github.com/seongho726)
+  - 장종욱 [(JongwookJang)](https://github.com/kowo1001)
   
 ## 🔥 Issues
   - link
