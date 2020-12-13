@@ -36,7 +36,7 @@
 
 
 ## 🌊 Data Flow
-
+![데이터흐름도](https://user-images.githubusercontent.com/37354978/102006339-d20c2500-3d63-11eb-92ee-e23cb1f3c97c.JPG)
 
 ## :running: How To Run
 
