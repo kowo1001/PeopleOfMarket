@@ -42,7 +42,7 @@
 
 
 ## ✍️ Author
- Team MartOfPeople
+ Team PeopelOfMarket
   - 최태열 [(TaeyeolChoi)](https://github.com/ta-ye)
   - 김성호 [(SeonghoKim)](https://github.com/seongho726)
   - 장종욱 [(JongwookJang)](https://github.com/kowo1001)
