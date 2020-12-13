@@ -43,8 +43,8 @@
 
 ## ✍️ Author
  Team MartOfPeople
-  - 최태열 [(ta-ye)](https://github.com/ta-ye)
-  - 김영호 [(SeonghoKim)](https://github.com/seongho726)
+  - 최태열 [(TaeyeolChoi)](https://github.com/ta-ye)
+  - 김성호 [(SeonghoKim)](https://github.com/seongho726)
   - 장종욱 [(JongwookJang)](https://github.com/kowo1001)
   
 ## 🔥 Issues
