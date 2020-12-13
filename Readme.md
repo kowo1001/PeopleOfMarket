@@ -14,7 +14,7 @@
 ![img](https://github.com/kowo1001/PeopleOfMarket/blob/master/1.PNG)
 
 ## :hammer_and_wrench: Service Process
-
+![Slide1](https://user-images.githubusercontent.com/37354978/102005472-5ce92180-3d5c-11eb-8e75-327304f69ee7.jpg)
 :information_desk_person: 관리자
   - 마트 검색
   - 마트 추가
