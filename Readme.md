@@ -12,7 +12,7 @@
 ## :eyes: Structure
 ![img](https://github.com/kowo1001/PeopleOfMarket/blob/master/1.PNG)
 
-## Service Process
+## :hammer_and_wrench: Service Process
 
 :information_desk_person: 관리자
   - 마트 검색
@@ -31,22 +31,22 @@
   - 주문
   - 주문금액 확인
 
-## Technologies Used
+## 💡 Technologies Used
 
 
-## Data Flow
+## 🌊 Data Flow
 
 
 ## :running: How To Run
 
 
-## Author
+## ✍️ Author
  Team MartOfPeople
   - 최태열
   - 김영호
   - 장종욱
   
-## Issues
+## 🔥 Issues
   - link
   
   
