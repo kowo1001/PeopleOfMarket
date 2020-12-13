@@ -9,7 +9,7 @@
 - 마트 관리자가 상품을 추가하고, 검색하고, 수정하고, 삭제하는 것을 목표로 합니다.
 - 고객이 상품을 구매하기 위해 주문을 하고, 주문 조회, 주문건 수정 및 삭제를 하는 것을 목표로 합니다.
 
-## Structure
+## :eyes: Structure
 ![img](https://github.com/kowo1001/PeopleOfMarket/blob/master/1.PNG)
 
 ## Service Process
@@ -37,7 +37,7 @@
 ## Data Flow
 
 
-## How To Run
+## :running: How To Run
 
 
 ## Author
