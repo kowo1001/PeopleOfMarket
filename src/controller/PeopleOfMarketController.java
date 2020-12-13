@@ -111,7 +111,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("상품 추가 : " + productName + " " + price + "원");
 		try {
-			Product p = ProductDAO.createProduct(productName, price, em);
+			Product p = service.createProduct(productName, price, em);
 			RunningEndView.allView(p);
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
@@ -126,7 +126,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("모든 상품 조회");
 		try {
-			ProductDAO.findAllProduct(em).forEach(v -> RunningEndView.allView(v));
+			service.findAllProduct(em).forEach(v -> RunningEndView.allView(v));
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("상품 검색 : " + productName);
 		try {
-			ProductDAO.findProduct(productName, em).forEach(v -> RunningEndView.allView(v));
+			service.findProduct(productName, em).forEach(v -> RunningEndView.allView(v));
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -154,7 +154,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("상품 수정 : " + productNo + " -> " + productName + " " + price + "원");
 		try {
-			if (ProductDAO.updateProduct(productName, price, productNo, em)) {
+			if (service.updateProduct(productName, price, productNo, em)) {
 				RunningEndView.showMessage("수정 성공");
 			} else {
 				RunningEndView.showError("수정 실패");
@@ -172,7 +172,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("상품 삭제 : " + productNo);
 		try {
-			if (ProductDAO.deleteProduct(productNo, em)) {
+			if (service.deleteProduct(productNo, em)) {
 				RunningEndView.showMessage("삭제 성공");
 			} else {
 				RunningEndView.showError("삭제 실패");
@@ -205,7 +205,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("모든 주문 조회");
 		try {
-			OrdersDAO.findAll(em).forEach(v -> RunningEndView.allView(v));
+			service.findAll(em).forEach(v -> RunningEndView.allView(v));
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -219,7 +219,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("마트별 주문 검색 : " + martNumber);
 		try {
-			MartDAO.getOrders(martNumber, em).forEach(m -> RunningEndView.allView(m));
+			service.getMartOrders(martNumber, em).forEach(m -> RunningEndView.allView(m));
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
@@ -231,19 +231,37 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("상품별 주문조회 : " + productNumber);
 		try {
-			ProductDAO.getOrders(productNumber, em).forEach(m -> RunningEndView.allView(m));
+			service.getProductOrders(productNumber, em).forEach(m -> RunningEndView.allView(m));
 		} catch (Exception e) {
 			RunningEndView.showError("오류");
 			e.printStackTrace();
 		}
 	}
 	
+	public void findOrdersByOrderNumber(int orderNumber) {
+		
+		EntityManager em = PublicCommon.getEntityManager();
+		try {
+			int tot = OrdersDAO.getTotalPriceForOrderNumber(orderNumber, em);
+			OrdersDAO.findOrdersByOrderNumber(orderNumber, em).forEach(v -> RunningEndView.allView(v));
+			RunningEndView.showMessage("주문번호 " + orderNumber + "의 전체 가격은 " + tot + "원 입니다.");
+
+		} catch (NoResultException e) {
+			RunningEndView.showError("주문 정보가 존재하지 않습니다.");
+		} catch (Exception e) {
+			RunningEndView.showError("오류");
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
+
 	public void updateOrders(int orderId, String pickupDate, String pickupTime) {
 
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("주문 수정 : " + orderId + " -> " + pickupDate + " " + pickupTime);
 		try {
-			if (OrdersDAO.updateOrders(orderId, pickupDate, pickupTime, em)) {
+			if (service.updateOrders(orderId, pickupDate, pickupTime, em)) {
 				RunningEndView.showMessage("수정 성공");
 			} else {
 				RunningEndView.showError("수정 실패");
@@ -261,7 +279,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("상품 주문 취소 : " + orderId);
 		try {
-			if (OrdersDAO.deleteOrder(orderId, em)) {
+			if (service.deleteOrder(orderId, em)) {
 				RunningEndView.showMessage("삭제 성공");
 			} else {
 				RunningEndView.showError("삭제 실패");
@@ -279,7 +297,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("주문 전체 취소 : " + orderNumber);
 		try {
-			if (OrdersDAO.deleteOrderByOno(orderNumber, em)) {
+			if (service.deleteOrderByOno(orderNumber, em)) {
 				RunningEndView.showMessage("삭제 성공");
 			} else {
 				RunningEndView.showError("삭제 실패");
@@ -297,7 +315,7 @@ public class PeopleOfMarketController {
 		EntityManager em = PublicCommon.getEntityManager();
 		log.info("수령 완료 : " + orderNumber);
 		try {
-			if (OrdersDAO.endOrder(orderNumber, em)) {
+			if (service.endOrder(orderNumber, em)) {
 				RunningEndView.showMessage("주문번호 " + orderNumber + " 수령 완료");
 			} else {
 				RunningEndView.showError("수령 실패");

@@ -11,14 +11,14 @@
 			<property name="javax.persistence.jdbc.user" value="SCOTT" />
 			<property name="javax.persistence.jdbc.password" value="TIGER" />
 
-			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" /> -->
 
 
-			<property name="hibernate.show_sql" value="true" />
-			<!-- <property name="hibernate.format_sql" value="true" />
+			<!-- <property name="hibernate.show_sql" value="true" />
+			 <property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" /> -->
 
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
 
 		</properties>
 	</persistence-unit>

@@ -47,7 +47,7 @@ public class PeopleOfMartService {
 		return martDAO.deleteMart(martNumber, em);
 	}
 	
-	public Product addProduct(String productName, int price, EntityManager em) throws SQLException {
+	public Product createProduct(String productName, int price, EntityManager em) throws SQLException {
 		return productDAO.createProduct(productName, price, em);
 	}
 	
@@ -63,7 +63,7 @@ public class PeopleOfMartService {
 		return productDAO.findProduct(productName, em);
 	}
 	
-	public boolean updateProduct(int productNo, String productName, int price, EntityManager em) throws SQLException, NoResultException {
+	public boolean updateProduct(String productName, int price, int productNo, EntityManager em) throws SQLException, NoResultException {
 		return productDAO.updateProduct(productName, price, productNo, em);
 	}
 	

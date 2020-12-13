@@ -78,7 +78,7 @@ public class RunningStartView {
 		
 		System.out.println("---------------------------");
 		System.out.println("주문 수정");
-		instance.updateOrders(2,"20/12/06","09:30");
+		instance.updateOrders(104,"20/12/06","09:30");
 		instance.findAllOrders();
 
 		System.out.println("---------------------------");
@@ -95,6 +95,8 @@ public class RunningStartView {
 		System.out.println("수령");
 		instance.endOrder(2);
 		instance.findAllOrders();
+		
+		instance.findOrdersByOrderNumber(2);
 		
 	}
 }
