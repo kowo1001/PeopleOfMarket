@@ -33,7 +33,7 @@
   - 주문금액 확인
 
 ## 💡 Technologies Used
-![Technology Used](https://user-images.githubusercontent.com/37354978/102007229-7f823700-3d6a-11eb-8bb0-f29a6ac8234a.JPG)
+![테크놀로지유즈드](https://user-images.githubusercontent.com/37354978/102009365-54074880-3d7a-11eb-8bb3-ac9fe198540c.JPG)
 
 ## 🌊 Data Flow
 ![데이터흐름도2](https://user-images.githubusercontent.com/37354978/102006703-7e4f0b00-3d66-11eb-81c3-690095433932.JPG)
