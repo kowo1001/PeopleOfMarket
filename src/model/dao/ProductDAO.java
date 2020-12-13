@@ -15,6 +15,13 @@ import model.domain.Product;
 import model.util.PublicCommon;
 
 public class ProductDAO {
+	
+	private static ProductDAO instance = new ProductDAO();
+	
+	public static ProductDAO getInstance() {
+		return instance;
+	}
+	
 	// create
 	public static Product createProduct(String productName, int price, EntityManager em)
 			throws SQLException {

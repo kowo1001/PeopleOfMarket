@@ -13,6 +13,13 @@ import model.domain.Product;
 
 
 public class OrdersDAO {
+	
+	private static OrdersDAO instance = new OrdersDAO();
+	
+	public static OrdersDAO getInstance( ) {
+		return instance;
+	}
+	
   public static Orders createOrder(int orderNumber, Mart m, Product p, int amount, int totalPrice, String pickupDate, String pickupTime, char ispickup, EntityManager em) throws SQLException {
       EntityTransaction tx = em.getTransaction();
       Orders o = null;

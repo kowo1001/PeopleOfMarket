@@ -16,6 +16,12 @@ import model.util.PublicCommon;
 
 
 public class MartDAO {
+	
+	private static MartDAO instance = new MartDAO();
+	
+	public static MartDAO getInstance() {
+		return instance;
+	}
 
 	public static Mart addMart(String martName, String location, EntityManager em) throws SQLException {
 		EntityTransaction tx = em.getTransaction();
