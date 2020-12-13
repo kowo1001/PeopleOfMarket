@@ -106,4 +106,12 @@ public class PeopleOfMartService {
 	public boolean endOrder(int orderNumber, EntityManager em) throws SQLException, NoResultException {
 		return ordersDAO.endOrder(orderNumber, em);
 	}
+	
+	public int getTotalPriceForOrderNumber(int orderNumber,EntityManager em) throws SQLException, NoResultException {
+		return ordersDAO.getTotalPriceForOrderNumber(orderNumber, em);
+	}
+	
+	public List<Orders> findOrdersByOrderNumber(int orderNumber,EntityManager em) throws SQLException, NoResultException {
+		return ordersDAO.findOrdersByOrderNumber(orderNumber, em);
+	}
 }

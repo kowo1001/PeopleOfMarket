@@ -42,19 +42,17 @@ public class OrdersDAO {
 		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 
-	public static Orders findOrdersByOrderId(int orderId, EntityManager em) throws SQLException, NoResultException {
-		Orders o = (Orders) em.createNativeQuery("select * from orders where ono=?", Orders.class)
-				.setParameter(1, orderId).getSingleResult();
-		return o;
-	}
-
 	public static List<Orders> findOrdersByOrderNumber(int orderNumber, EntityManager em)
 			throws SQLException, NoResultException {
 		List<Orders> o = em.createNativeQuery("select * from orders where ono=?", Orders.class)
 				.setParameter(1, orderNumber).getResultList();
-		return o;
+		if(o.size() != 0) {
+			return o;
+		}
+		throw new NoResultException("주문정보가 존재하지 않습니다");
 	}
 	
+
 	//오더 넘버들의 가격들을 다 더한 total price
 	public static int getTotalPriceForOrderNumber(int orderNumber, EntityManager em)
 			throws SQLException, NoResultException {
