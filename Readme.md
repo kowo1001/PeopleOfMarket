@@ -11,7 +11,7 @@
 - 고객이 상품을 구매하기 위해 주문을 하고, 주문 조회, 주문건 수정 및 삭제를 하는 것을 목표로 합니다.
 
 ## :eyes: Structure
-![img](https://github.com/kowo1001/PeopleOfMarket/blob/master/1.PNG)
+![img](https://github.com/kowo1001/PeopleOfMarket/blob/master/images/Structure.PNG)
 
 ## :hammer_and_wrench: Service Process
 ![Slide1](https://user-images.githubusercontent.com/37354978/102005472-5ce92180-3d5c-11eb-8e75-327304f69ee7.jpg)
