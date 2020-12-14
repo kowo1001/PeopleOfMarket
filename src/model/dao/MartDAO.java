@@ -18,7 +18,7 @@ import model.util.PublicCommon;
 public class MartDAO {
 	
 	private static MartDAO instance = new MartDAO();
-	
+	private MartDAO() {};
 	public static MartDAO getInstance() {
 		return instance;
 	}

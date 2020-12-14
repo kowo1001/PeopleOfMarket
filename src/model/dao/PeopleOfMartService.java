@@ -14,7 +14,7 @@ import model.util.PublicCommon;
 public class PeopleOfMartService {
 
 	private static PeopleOfMartService instance = new PeopleOfMartService();
-	
+	private PeopleOfMartService() {};
 	public static PeopleOfMartService getInstance() {
 		return instance;
 	}

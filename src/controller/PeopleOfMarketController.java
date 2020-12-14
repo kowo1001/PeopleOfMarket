@@ -20,7 +20,7 @@ import view.RunningEndView;
 public class PeopleOfMarketController {
 
 	private static PeopleOfMarketController instance = new PeopleOfMarketController();
-
+	private PeopleOfMarketController() {};
 	public static PeopleOfMarketController getInstance() {
 		return instance;
 	}

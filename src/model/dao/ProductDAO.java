@@ -17,7 +17,7 @@ import model.util.PublicCommon;
 public class ProductDAO {
 	
 	private static ProductDAO instance = new ProductDAO();
-	
+	private ProductDAO() {};
 	public static ProductDAO getInstance() {
 		return instance;
 	}

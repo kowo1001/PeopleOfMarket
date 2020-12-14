@@ -14,7 +14,7 @@ import model.domain.Product;
 public class OrdersDAO {
 
 	private static OrdersDAO instance = new OrdersDAO();
-	
+	private OrdersDAO() {};
 	public static OrdersDAO getInstance( ) {
 		return instance;
 	}
